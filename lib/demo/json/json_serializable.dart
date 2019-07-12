@@ -6,14 +6,14 @@ part 'json_serializable.g.dart';
 
 @JsonSerializable(nullable: true)
 class Book {
-  int page;
-  int per_page;
-  int total;
-  int total_pages;
+  final int page;
+  final int per_page;
+  final int total;
+  final int total_pages;
 
-  Author author;
+  final Author author;
 
-  List<User> data;
+  final List<User> data;
 
 
   Book({this.page, this.per_page, this.total, this.total_pages, this.author,
@@ -25,8 +25,8 @@ class Book {
 
 @JsonSerializable(nullable: true)
 class Author {
-  String first_name;
-  String last_name;
+  final String first_name;
+  final String last_name;
 
   Author({
     this.first_name,
@@ -39,18 +39,32 @@ class Author {
 
 @JsonSerializable(nullable: true)
 class User {
-  int id;
-  String first_name;
-  String last_name;
-  String avatar;
-
+  final int id;
+  final String first_name;
+  final String last_name;
+  final String avatar;
+  final List<Image> images;
   User({
     this.id,
     this.first_name,
     this.last_name,
     this.avatar,
+    this.images
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);
 }
+
+@JsonSerializable(nullable: true)
+class Image {
+  final int id;
+  final String imageName;
+
+  Image({this.id, this.imageName});
+
+  factory Image.fromJson(Map<String, dynamic> json) => _$ImageFromJson(json);
+  Map<String, dynamic> toJson() => _$ImageToJson(this);
+}
+
+

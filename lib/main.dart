@@ -1,3 +1,4 @@
+import 'package:demo_network_json/demo/network/dio.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -57,6 +58,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    DemoDioHttpClient().demoGet();
+  }
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done

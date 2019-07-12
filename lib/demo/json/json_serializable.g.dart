@@ -46,12 +46,24 @@ User _$UserFromJson(Map<String, dynamic> json) {
       id: json['id'] as int,
       first_name: json['first_name'] as String,
       last_name: json['last_name'] as String,
-      avatar: json['avatar'] as String);
+      avatar: json['avatar'] as String,
+      images: (json['images'] as List)
+          ?.map((e) =>
+              e == null ? null : Image.fromJson(e as Map<String, dynamic>))
+          ?.toList());
 }
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'id': instance.id,
       'first_name': instance.first_name,
       'last_name': instance.last_name,
-      'avatar': instance.avatar
+      'avatar': instance.avatar,
+      'images': instance.images
     };
+
+Image _$ImageFromJson(Map<String, dynamic> json) {
+  return Image(id: json['id'] as int, imageName: json['imageName'] as String);
+}
+
+Map<String, dynamic> _$ImageToJson(Image instance) =>
+    <String, dynamic>{'id': instance.id, 'imageName': instance.imageName};
